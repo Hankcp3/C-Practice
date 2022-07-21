@@ -78,6 +78,58 @@ int main(void)
 		"and " << count2 << "numbers larger than average." << endl;
 }
 
+6.6
+编写一个程序，记录捐助给“维护合法权利团体”的资金。该程序要求用户输入捐献者数目，然后要求用户输入每一个捐献者的姓名和款项。
+这些信息被储存在一个动态分配的结构数组中。每个结构有两个成员:用来储存姓名的字符数组（或string对象）和用来存储款项的double成员。
+读取所有的数据后，程序将显示所有捐款超过10000的捐款者的姓名及其捐款数额。
+该列表前应包含一个标题，指出下面的捐款者是重要捐款人(Grand Patrons)。然后，程序将列出其他的捐款者，该列表要以Patrons开头。
+如果某种类别没有捐款者，则程序将打印单词“none”。该程序只显示这两种类别，而不进行排序。
+answer:
+struct donation {
+	string name;
+	double money;
+};
+
+void Grandpatrons(donation* ptr, int number)
+{
+
+	for (int i = 0; i < number; i++) {
+		if (ptr[i].money > 10000) {
+			cout << "Grand Patrons!\n";
+			cout << "Name: " << ptr[i].name << "\t" <<
+				"Money" << ptr[i].money << endl;
+		}
+		else {
+			cout << "Patrons.\n";
+			cout << "Name: " << ptr[i].name << "Money" << ptr[i].money << endl;
+		}
+
+	}
+
+}
+
+
+int main()
+{
+	int number;
+	cout << "Enter number: \n";
+	cin >> number;
+	cin.get();
+	donation* ptr = new donation[number];
+
+	for (int i = 0; i < number; i++) {
+		cout << "Print No." << i + 1 << " member name.\n";
+		getline(cin, ptr[i].name);
+		cout << "Print No." << i + 1 << " member money.\n";
+		cin >> ptr[i].money;
+		cin.get();
+	}
+
+	cout << "Complete input.\n";
+
+	Grandpatrons(ptr, number);
+	return 0;
+}
 
 
 
