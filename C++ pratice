@@ -39,6 +39,45 @@ int main()
 	
 }
 
+chapter 6
+6.2
+编写一个程序，最多将10个donation值读入到一个double数组中（如果您愿意，也可使用模板类array)。程序遇到非数字输入时将结束输入，并报告这些数字的平均值以及数组中有多少个数字大于平均值。
+answer:
+int main(void)
+{
+	double donations[10];
+	int count = 0;
+	double sum = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "Enter numbers:";
+		cin >> donations[i];
+		if (isalpha(donations[i]))
+		{
+			break;
+		}
+		sum += donations[i];
+		count += 1;
+		
+	
+	}
+
+	double average = sum / count;
+	double size = sizeof(donations) / sizeof(donations[0]);
+	int count2 = 0;
+	for (int i = 0; i < size; i++)
+	{
+		if (donations[i] > average)
+		{
+			count2 += 1;
+		}
+
+	}
+
+	cout << "Average number is:" << average <<
+		"and " << count2 << "numbers larger than average." << endl;
+}
+
 
 
 
